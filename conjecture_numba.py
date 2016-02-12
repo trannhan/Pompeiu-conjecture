@@ -13,35 +13,35 @@ import subprocess
 import os
 import tempfile
 import shutil
-from numbapro import jit, int32, float32, complex64
+from numba import autojit
 
-@jit
+@autojit
 def coef(n,J):
     global l
-    p = 1
+    p = np.zeros((l,),dtype=np.int)
     
     for k in range(l):
-        p *= np.math.factorial(J[k])
-    
-    return np.math.factorial(n)/p    
-    
-@jit    
+        p[k] = np.math.factorial(J[k])        
+
+    return np.math.factorial(n)/np.prod(p)
+
+
 def validate(J,n):
     global l,M
     
     if sum(J)!=n+2:
         return False
         
-    summJ = 0
+    summJ = np.zeros((l,),dtype=np.int)
     for k in range(l):        
-        summJ += (k - M)*J[k]
+        summJ[k] = (k - M)*J[k]
         
-    if summJ!=-n:
+    if sum(summJ)!=-n:
         return False
         
     return True        
         
-        
+                
 def findJ(depth=0):
     global J,A,n,l    
     
@@ -109,9 +109,7 @@ def SimplifyEq(eq,f):
     
     #eq = sp.simplify(eq.expand(complex=True))    
     #eq = sp.powsimp(eq)
-    #eq = sp.factor(eq)
-    #sp.pprint(eq)  
-    
+    #eq = sp.factor(eq)    
     return eq
 
 
@@ -128,7 +126,7 @@ def displayMath(LatexString,filename):
 #    pdf = build_pdf(tex)
 #    pdf.save_to(filename+".pdf")
     
-    
+ 
 def generate_pdf(filename,tex):    
     current = os.getcwd()
     temp = tempfile.mkdtemp()
@@ -149,7 +147,7 @@ def generate_pdf(filename,tex):
     #shutil.rmtree(temp)  
     
     
-def generate_report(filename,s,eq,SolList):
+def generate_report(filename,OriEq,SimEq,SolList,Time):
     global M,n
     text = "M = "+str(M)+", n = "+str(n)+":"
     tex = (r"\documentclass{article}"
@@ -158,18 +156,18 @@ def generate_report(filename,s,eq,SolList):
                  text + \
                  r"\newline\newline Original equation:"
                  r"\begin{dmath}" + \
-                 sp.latex(s.replace('$','')) + \
+                 sp.latex(OriEq.replace('$','')) + \
                  r"\end{dmath}"
-                 r"Simplified equation, where $f_{-j}=\overline{f_j}$:"
+                 r"Equivalent equation, where $f_{-j}=\overline{f_j}$:"
                  r"\begin{dmath}" + \
-                 sp.latex(eq) + r" = 0" + \
+                 sp.latex(SimEq) + r" = 0" + \
                  r"\end{dmath}"
                  r"All possible solutions:")
     for sol in SolList:                
         tex += (r"\begin{dmath}" + \
                  sp.latex(sol) + \
                  r"\end{dmath}")
-    tex += (r"\end{document}")
+    tex += (Time + r"\end{document}")
     generate_pdf(filename,tex)
     
 ################# MAIN PROGRAM ####################
@@ -196,28 +194,32 @@ f = sp.symbols('f0:25',complex=True)
 
 startTime = time.time()
 
-findJ()
+filename = "conjecture M="+str(M)+" n="+str(n)
+try:    
+    A = np.load(filename + '.npy')
+except:    
+    findJ()
+    np.save(filename,A)
 s = printEqLatex(A)  
 
-filename = "conjecture M="+str(M)+" n="+str(n)
 print("\nOriginal equation:")
 #displayMath(s,filename)
 display(Math(s.replace('$\n$','')))
-print("Time elapsed:",time.time()-startTime,"seconds")
+print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 eq = printEqMath(A,f)
 eq = SimplifyEq(eq,f)
-print("\nSimplified left-hand-side, where f_{-j}=conj(f_j):")
+print("\nEquivalent left-hand-side, where f_{-j}=conj(f_j):")
 display(eq)
-print("Time elapsed:",time.time()-startTime,"seconds")
+print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 print("\nAll possible solutions:")
-SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0)
+SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,rational=0,dict=1)
 for sol in SolList:
     display(sol)
 #sp.preview(SolList, output='png')
 
+Time = "\nTime elapsed: " + str(time.time()-startTime) + " seconds"
+print(Time)
 print("\nGenerating report.")
-generate_report(filename,s,eq,SolList)
-
-print("Time elapsed:",time.time()-startTime,"seconds")
+generate_report(filename,s,eq,SolList,Time)
