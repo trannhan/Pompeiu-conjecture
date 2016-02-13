@@ -1,0 +1,158 @@
+%663.tex
+%\documentclass{amsart}
+\documentclass[12pt]{article}
+\usepackage{amsxtra,amssymb,amsthm,amsmath,latexsym}
+
+\textheight=8.5truein \voffset=-.5truein
+\textwidth=6.25truein \hoffset=-.5truein
+%\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\thefootnote}{{~}}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+%\theorembodyfont{\rmfamily}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\numberwithin{equation}{section}
+
+\newcommand{\res}{\operatorname{Res}}
+
+\newcommand{\refT}[1]{Theorem~\ref{T:#1}}
+\newcommand{\refS}[1]{Section~\ref{S:#1}}
+\newcommand{\refU}[1]{Subsection~\ref{U:#1}}
+\newcommand{\refL}[1]{Lemma~\ref{L:#1}}
+\newcommand{\refC}[1]{Chapter~\ref{C:#1}}
+\newcommand{\refCL}[1]{Claim~\ref{CL:#1}}
+\newcommand{\refP}[1]{Proposition~\ref{P:#1}}
+\newcommand{\refD}[1]{Definition~\ref{D:#1}}
+\newcommand{\refR}[1]{Remark~\ref{R:#1}}
+
+\def\ds{\displaystyle}
+\def\nd{\noindent}
+\def\bysame{\rule{.5in}{.005in},\ }
+\def\qed{{\hfill $\Box$}}
+\def\ra{\rightarrow}
+\def\lra{\longrightarrow}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\C{{\mathbb C}}
+\def\calD{{\mathcal D}}
+\def\doteta{\dot{\eta}}
+\def\dotf{\dot{f}}
+\def\dotg{\dot{g}}
+\def\doth{\dot{h}}
+\def\dotu{\dot{u}}
+\def\tildeR{\widetilde R}
+\def\oH{{\overset{\circ}{H}}}
+\def\oH1{{\overset{\circ}{H}\kern-.02in{}^1}}
+\def\l{\ell}
+\def\cop{\bot\hskip-.075in\bot}
+\def\ind{{\hbox{\,ind\,}}}
+\def\Im{{\hbox{\,Im\,}}}
+\def\supp{{\hbox{\,supp\,}}}
+\def\const{{\hbox{\,const\,}}}
+\def\loc{{\hbox{\,loc\,}}}
+\def\bee{\begin{equation*}}
+\def\eee{\end{equation*}}
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+
+
+%\renewcommand{\theorem}{\arabic{theorem}}%\setcounter{theorem}{1}
+
+\begin{document}
+
+%\begin{titlepage}
+\title{Conjecture}
+
+\author{Alexander G. Ramm \\
+Mathematics Department, Kansas State University\\
+Manhattan, KS 66506, USA\\
+email:     ramm@math.ksu.edu\\
+http://www.math.ksu.edu/\,$\widetilde{\ }$\,ramm}
+
+\date{}
+
+\maketitle\thispagestyle{empty}
+
+\begin{abstract}
+
+\end{abstract}
+
+
+ Math subject classification: 47A05
+
+Key words: closed graph theorem; closed linear operator; uniform boundedness principle; new short proof of the closed graph theorem.
+
+
+\section{INTRODUCTION.}\label{S:1}
+
+I'd like to formulate a research question that so far I did not answer theoretically.
+Can this question be answered using a computer program?
+
+Let M be a positive integer, $f_m=\overline{f_{-m}}, f_m$ are numbers, $-M \le m \le M, m$ are integers, $\overline{.}$ stands for complex conjugate,
+\be 
+ f(\theta):= \sum_{m=-M}^M f_m e^{im\theta}, \quad 0<c_1\le f(\theta)\le c_2,  
+\ee
+$c_1, c_2$ are constants.
+
+Let $j_m$ be integers, such that
+\be \label{eq2}
+	0\le j_m\le n+2;     \sum_{m=-M}^M j_m=n+2;     \sum_{m=-M}^M mj_m=-n,       
+\ee
+where
+\be
+	C^{n+2}_{...j_m...}:=\frac {(n+2)!}{(j_{-M})!.....(j_m)!...(j_M)!}
+\ee
+is a multinomial coefficient:  
+\be
+	(\sum_{m=-M}^M a_m)^n=\sum_{j_m}C^{n}_{...j_m...}\prod_{m=-M}^M a_m^{j_m}
+\ee	
+Assume:
+
+1. \eqref{eq2}
+and
+
+2.  $\sum_{j_m}C^{n+2}_{...j_m...}\prod_{m=-M}^M f_m^{j_m}=0,$
+where 1. and 2. hold for all $n>n_0$, and $n_0$ is an arbitrary large fixed positive integer.
+Here $M$ does not depend on $n$.
+
+My Conjecture:  Assumptions 1. and 2. imply that $f_m=0 \quad\forall  m\neq 0$.
+
+I have proved this conjecture  for M=1.
+
+Can one design a computer program to prove this conjecture for any (finite) integer $M$?
+One may start with M=2.
+If this conjecture is proved, then an important open (since 1929) problem will
+be solved.
+
+
+\begin{thebibliography}{999}
+
+\bibitem{DS} N.Dunford, J. Schwartz,  Linear operators,  Part I, Interscience, New York, 1958.
+
+\bibitem{H}  P. Halmos, A Hilbert space problem book, Springer-Verlag, New York, 1974. (problems 52 and 58)
+
+\bibitem{He} J. Hennefeld, A non-topological proof of the uniform boundedness theorem, Amer. Math. Monthly,
+87, (1980), 217.
+
+\bibitem{Ho} S. Holland,  A Hilbert space proof of the Banach-Steinhaus theorem, Amer. Math. Monthly,
+76, (1969), 40-41.
+
+\bibitem{K} T. Kato,  Perturbation theory for linear operators, Springer-Verlag, New York, 1984.
+
+\bibitem{S} A. Sokal,  A relally simple elementary proof of the uniform boundedness theorem,
+Amer. Math. Monthly, 118, (2011), 450-452.
+
+\bibitem{Y} K. Yosida,  Functional analysis, Springer, New York, 1980.
+
+\end{thebibliography}
+
+
+\end{document}
