@@ -1,0 +1,382 @@
+%pompe14.tex
+\documentclass[final,11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+%\def\cond{\mathop{\rm cond}}
+%\def\dft{\mathop{\rm DFT}}
+%\def\diag{\mathop{\rm diag}}
+\def\Re{\mathop{\rm Re}}
+\def\Im{\mathop{\rm Im}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+%% Title, authors and addresses
+\title{On the Pompeiu problem}
+
+\author{A. G. Ramm\\
+\small Mathematics Department \\
+\small Kansas State University, Manhattan, KS 66506, USA \\
+\small Email: ramm@math.ksu.edu}
+
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+It is proved that if $D\subset \R^2$ is diffeomorphic to a disc,
+and the Fourier transform $\tilde{\chi}(k\alpha)=0$ for
+all unit vectors $\alpha\in \R^2$, then $D$ is a disc. Here
+$\chi$ is the characteristic function of $D$.
+Various equivalent formulations of the Pompeiu problem are considered.
+\end{abstract}
+
+\noindent\textbf{Key words:}
+The Pompeiu problem; Fourier transforms of characteristic sets;
+overdetermined boundary value problems
+
+%% MSC codes here, in the form: \MSC code \sep code
+\noindent\textbf{MSC[2010]:}  35J25; 35J05
+
+\section{Introduction} \label{Introduction}
+
+The modern formulation of the Pompeiu problem can be given in
+several equivalent ways. In this paper the two-dimensional problems
+are considered for simplicity. The history of the Pompeiu problem goes
+back to 1929, see \cite{P}. Basic known results and references
+about this problem can be found, for example, in \cite{R470}, Chapter 11.
+The papers cited in the bibliography, which is incomplete,
+ deal with various aspects of the Pompeiu problem. Our paper is essentially
+ self-contained.
+
+We
+assume throughout that $D\subset \R^2$ is a domain diffeomorphic to a
+disc, and its boundary $S$ is a real analytic convex curve (see \cite{W},
+where the analyticity assumption is justified).
+%, which is star-shaped with respect to the origin, so that $r=f(\phi)$ is its equation in
+%polar coordinates, where $f\ge c>0$ is an analytic function on a
+%neighborhood of the interval $[-\pi, \pi]$.
+%By $c>0$ various
+%constants are denoted in this paper.
+By $\chi$ the characteristic
+function of $D$ and by $\tilde{\chi}(\xi):=\int_De^{i\xi\cdot x}dx$
+its Fourier transform are denoted, respectively. The vector
+$\xi=k\alpha$, where $k>0$ is the length of $\xi$, $\alpha\in S^1$
+is a unit vector in $\R^2$, $S^1$ is a unit circle in $\R^2$, and
+$\xi\cdot x=(\xi, x)$ is the dot product in $\R^2$.
+
+One of the modern formulations of the Pompeiu problem is the
+following (\cite{R470}, \cite{R629}):
+
+{\bf Formulation 1.} {\it Prove that if
+\begin{equation}\label{eq:1}
+\tilde{\chi}(k\alpha)=0
+\end{equation}
+for all $\alpha\in S^1$ and a fixed $k>0$,
+ then $D$ is a disc.}
+
+We prove Theorem 1.
+
+{\bf Theorem 1.}
+{\it If (\ref{eq:1}) holds
+%\begin{equation}\label{eq:1'} \tilde{\chi}(k\alpha)=0 \end{equation}
+for all $\alpha\in S^1$ and a fixed $k>0$,
+then $D$ is a disc.}
+
+Let us give two other equivalent formulations of the Pompeiu problem.
+Denote by $N$ the unit normal to $S$ pointing out of $D$.
+
+{\bf Formulation 2.} {\it Suppose that $k>0$ is fixed and the following problem
+\begin{equation}\label{eq:2}
+(\nabla^2+k^2)u=1 \quad in \quad D, \quad u|_S=u_N|_S=0,
+\end{equation}
+has a solution. Prove that then $D$ is a disc.}
+
+{\bf Formulation 3.} {\it Assume that $f\in L^1_{loc}$, $f\not\equiv 0$, and
+\begin{equation}\label{eq:3}
+\int_Df(y+gx)dx=0, \quad \forall y\in \R^2, \quad \forall g,
+\end{equation}
+where $g$ is an arbitrary rotation. Prove that then $D$ is a
+disc.}
+
+The equivalence of Formulations 1, 2 and 3 is briefly proved below,
+ see also \cite{R470}, Chapter 11. In this
+proof $1$ stands for Formulation 1, etc.
+
+$1\Rightarrow 2.$ If an entire function of exponential type
+$\tilde{\chi}(\xi)$ vanishes on the irreducible algebraic variety
+$\xi^2=k^2$, then the function
+$\tilde{u}:=\tilde{\chi}(\xi)(\xi^2-k^2)^{-1}$ is also entire and of the
+same exponential type. Its Fourier transform $u(x)$ solves problem
+(\ref{eq:2}). \hfill $\Box$
+
+$2\Rightarrow 1.$ If (\ref{eq:2}) holds, then multiply (\ref{eq:2})
+by $e^{ik\alpha \cdot x}$, $\alpha\in S^1$, integrate over $D$, and
+then by parts, using the boundary conditions (\ref{eq:2}) and the equation
+$(\nabla^2+k^2)e^{ik\alpha \cdot x}=0$. This yields (\ref{eq:1}). \hfill $\Box$
+
+$3\Rightarrow 1.$ Take the Fourier transform (in the distributional
+sense) of (\ref{eq:3}) and get
+$\overline{\tilde{\chi}(g^{-1}\xi)}\tilde{f}(\xi)=0$, where the overline
+stands for the complex conjugate. Therefore,
+$supp \tilde{f}=\cup_{k}C_k$, where $C_k=\{\xi: \xi^2=k^2,
+\tilde{\chi}|_{\xi^2=k^2}=0\}$, and the set $\{k\}$ is a discrete finite
+set
+of positive numbers. Thus, there is a $k>0$ such that (\ref{eq:1}) holds. \hfill $\Box$
+
+$1\Rightarrow 3.$ If (\ref{eq:1}) holds, then there exists an
+$\tilde{f}\neq 0$ supported on $C_k$. Then
+$\overline{\tilde{\chi}(g^{-1}\xi)}\tilde{f}(\xi)=0$. Taking the inverse
+Fourier transform of this relation yields (\ref{eq:3}). \hfill $\Box$
+
+
+In Section 2 we prove Theorem 1.
+Because Formulation 1 is equivalent to Formulations 2 and 3,
+the following two theorems will be established if Theorem 1 is proved:
+
+{\bf Theorem 2.} {\it If (\ref{eq:2}) holds, then $D$ is a disc.}
+
+{\bf Theorem 3.} {\it If (\ref{eq:3}) holds, then $D$ is a disc.}
+
+\section{Proof of Theorem 1.}
+
+Let us describe the steps of our proof.
+
+{\bf Step 1:}  If equation (\ref{eq:1}) holds for $\alpha \in S^1$,
+then (\ref{eq:1}) holds for
+all complex $z_1,z_2$ satisfying the equation $z_1^2+z_2^2=1$,
+where $z_1$ replaces $\alpha_1$ and $z_2$ replaces $\alpha_2$ in equation (\ref{eq:1}).
+Define an algebraic variety $$M:=\{z: z\in \C^2, z_1^2+z_2^2=1\}.$$
+Clearly, $S^1\subset M$.
+
+{\bf Step 2:}  Let $M_1:=\{\eta: \eta\in \mathbb{C}\setminus (-\infty,-1]\cup [1,\infty) \}$.
+Set $z_1=-i\eta$. Then (\ref{eq:1}) yields
+\begin{equation}\label{eq:4}
+\int_D e^{\eta x+i(1+\eta^2)^{1/2}y}dxdy=0, \qquad \forall \eta\in M_1.
+\end{equation}
+
+{\bf Step 3:} If  (\ref{eq:4}) holds, then
+\begin{equation}\label{eq:5}
+\int_D e^{iy}x^ndxdy=0, \qquad \int_D e^{ix}y^ndxdy=0, \qquad n=0,1,2,......
+\end{equation}
+
+{\bf Step 4:} Let $\ell$ be an arbitrary unit vector, $L_1$ be the support line to $D$ at the point $s\in S$
+parallel to $\ell$, where $S$ is the boundary of $D$,
+and $L_2$ be  the support line to $D$,  parallel to $L_1$, at the point $q\in S$, $q=q(s)$.
+Let $L$ be the distance between $L_1$ and $L_2$, that is, the width
+of $D$ in the direction orthogonal to $\ell$.
+ Since $D$ is strictly convex, one can introduce the equations $y=f(x)$ and  $y=g(x)$
+of the boundary $S$ between the support points $s$ and $q$. The graph of $f$ is located above
+the graph of $g$. The function $f$ has a unique point of maximum $x_1$, $x_1\in (a,b)$, $f(x_1)>f(x)$,
+where $a$ and $b$ are $x-$coordinates of the points  $q$ and $s$.
+  The function $g$ has a unique point of  minimum $x_2$,  $x_2\in (a,b)$, $g(x)>g(x_2)$.
+  Let us assume that these maximum and minimum are
+non-degenerate, that is, $f^{''}(x_1)\neq 0,$ and $g^{''}(x_2)\neq 0.$
+Let us write the second  formula (\ref{eq:5}) as
+ \begin{equation}\label{eq:6}
+\int_D e^{ix}y^ndxdy=\int_a^b e^{ix} \frac {f^{n+1}(x)-g^{n+1}(x)}{n+1} dx= 0, \qquad n=0,1,2,.......
+\end{equation}
+The factor $n+1$ in the denominator can be canceled. 
+The Laplace formula (see, for example, \cite{F}) for the asymptotic of the integral
+$$ F(\lambda):=\int_a^b \phi(x) e^{\lambda S(x)}dx\sim \Big(-\frac{2\pi}{\lambda S^{''}(\xi)}\Big)^{1/2} \phi(\xi)e^{\lambda S(\xi)},\qquad \lambda\to \infty,$$
+where $\xi\in (a,b)$  is a unique point of non-degenerate maximum of $S(x)$,  $S^{''}(\xi)\neq 0$.
+Let us applying this formula with $S(x)=\ln |f|$, $\lambda=2m:=n+1\to \infty$, $\phi=e^{ix}$,
+and  take $n=2m-1$ to ensure that $n+1$ is an even number, so that
+$\ln f^{n+1}$ and $\ln g^{n+1}$ are well defined. Note that $(\ln |f|)^{''}=
+\frac {f^{''}(x_1)}{f(x_1)}$ at the maximum point $x_1$ since $f'(x_1)=0$ and $f^{''}(x_1)<0$.
+The point of minimum of the function $g$ becomes the point of maximum of $g^{2m}$. 
+Taking the above into consideration, one obtains from (\ref{eq:6}) the following formula:
+%\begin{equation}\label{eq:7}
+\begin{eqnarray}
+\int_D e^{ix}y^ndxdy=\Big[e^{ix_1+2m\ln |f(x_1)|}\Big(\frac{2\pi|f^{''}(x_1)|}{(2m-1)|f(x_1)|}\Big)^{1/2}- \notag\\
+e^{ix_2+2m\ln |g(x_2)|}\Big(\frac{2\pi|g^{''}(x_2)|}{(2m-1)|g(x_2)|}\Big)^{1/2}\Big](1+o(1))= 0, \quad n\to \infty,
+\end{eqnarray}
+where $n=2m-1$, $x_1\in (a,b)$ and $x_2\in (a,b)$.
+%\end{equation}
+ It follows from the above formula  that the expression in brackets, that is, the main term of the asymptotic,
+  must vanish for all sufficiently large $m$.
+ Therefore,
+ \begin{equation}\label{eq:8}
+x_1=x_2:=x_0; \quad |f(x_0)|= |g(x_0)|; \quad |f^{''}(x_0)|=|g^{''}(x_0)|.
+\end{equation}
+Also,
+ \begin{equation}\label{eq:9}
+L=f(x_0)-g(x_0)>0.
+\end{equation}
+
+Let $R=R(s)$ denote the radius of curvature of the curve $S$ at the point $s$ and
+let $\kappa=\kappa (s)$ denote the curvature of $S$ at the same point.  One has the formula
+ \begin{equation}\label{eq:9'}
+R^{-1}=\kappa=|f^{''}(x_0)|,
+\end{equation}
+which follows from the known formula
+$$\kappa=\frac{|f^{''}(x_0)|}{[1+|f'(x_0)|^2]^{3/2}},$$
+because $f'(x_0)=0$ since $x_0$ is a point of maximum of $f$.
+
+
+{\bf Step 5:} From   (\ref{eq:8}) we derive that
+\begin{equation}\label{eq:10}
+L(s)=2R(s), \qquad \forall s\in S,
+\end{equation}
+and
+\begin{equation}\label{eq:11}
+L(s)=const.
+\end{equation}
+This and  (\ref{eq:10}) imply that
+\begin{equation}\label{eq:12}
+R(s)=const.
+\end{equation}
+Therefore $S$ is a circle.
+
+This leads to the conclusion of Theorem 1.
+
+In what follows the above steps are discussed in detail. Let us start
+with {\bf Step 1.}
+
+{\bf Lemma 1} {\it If (\ref{eq:1}) holds for all $\alpha\in S^1$
+and a fixed $k>0$, then it holds for all $\alpha\in M$ and the same
+$k>0$.}
+
+{\it Proof.} The function $\tilde{\chi}(\xi)$ is an entire function
+of $\xi\in \C^2$. Let $\xi=(z_1,z_2)$, $z_j\in \C$, $j=1,2$,
+$z_j=x_j+iy_j$. Assume that $\tilde{\chi}(x_1,x_2)=0$ if $x_1^2+x_2^2=1$.
+The function $g(z_1):=\tilde{\chi}(z_1, \sqrt{1-z_1^2})$ is an analytic
+function of $z_1$ for $|z_1|<\delta$, where $\delta<1$. By our assumption,
+$g(x_1)=0$. By the uniqueness theorem for analytic functions of one
+complex variable, it follows that $g(z_1)=0$ for $|z_1|<\delta$,
+ and, consequently, everywhere in the set $(z_1, \sqrt{1-z_1^2})$, where
+$z_1$ runs through a set in $\C$ for which $\sqrt{1-z_1^2}$ is analytic.
+The union of this set and the set $(z_1, -\sqrt{1-z_1^2})$ is the
+variety $M$. So, if $\tilde{\chi}(x_1,x_2)=0$ in the set $x_1^2+x_2^2=1$,
+where $x_1$ and $x_2$ are real numbers,
+then $\tilde{\chi}(z_1,z_2)=0$ in $M$. Lemma 1 is proved.
+\hfill $\Box$
+
+{\bf Step 1} is completed. \hfill $\Box$
+
+{\bf Step 2} is obvious and does not require a proof. \hfill $\Box$
+
+{\bf Step 3.} From formula (\ref{eq:4}) it follows that
+\begin{equation}\label{eq:13}
+\sum_{n=0}^\infty \frac {\eta^n}{n!}\int_Ddxdy x^n e^{i(1+\eta^2)^{1/2}y}=0 \qquad \forall \eta\in M_1.
+\end{equation}
+Let $\eta=0$. Then $\int_D e^{iy}dxdy=0$, and the term with $n=0$ in  (\ref{eq:13}) is gone.
+Divide  (\ref{eq:13}) with the sum started at $n=1$ by $\eta$ and then let $\eta=0$.
+Then  $\int_D e^{iy}xdxdy=0$, and the term with $n=1$ is gone. Continue in this way and
+get the first formula (\ref{eq:5}) for all $n=0,1,2,.....$. The second formula in  (\ref{eq:5})
+is proved similarly since $\eta$ and $(1+\eta^2)^{1/2}$ enter symmetrically in formula  (\ref{eq:4}).
+
+{\bf Step 3} is done. \hfill $\Box$
+
+{\bf Step 4.} This step was done above, in the outline of the steps. \hfill $\Box$
+
+{\bf Step 5.}  Let $r=r(s)$ be the equation of $S$, where $r$ is the radius vector of the point $s\in S$.
+It is known that $r'(s)=t$, where $t=t(s)$ is a unit vector tangential to S. We have chosen $s$ so that $t$
+is parallel to $\ell$. Since $\ell$ is arbitrary, the point $s\in S$ is arbitrary.
+The point $q\in S$, $q=q(s)$,  is uniquely determined by the requirement that
+$t(q)=-t(s)$. Thus,  one has
+\begin{equation}\label{eq:14}
+(r(q)-r(s), r'(s))=0,\qquad (r(q)-r(s), r'(q))=0, \quad \forall s\in S,
+\end{equation}
+where $(u,v)$ denotes the inner product in $\mathbb {R}^2$.
+Differentiate the first equation  (\ref{eq:14}) with respect to $s$
+and get
+\begin{equation}\label{eq:15}
+(r'(q)\frac{dq}{ds}-r'(s), r'(s))+(r(q)-r(s), r^{''}(s)) =0, \quad \forall s\in S.
+\end{equation}
+Since $ r^{''}(s)=\kappa \nu$ where $\nu=\nu(s)$ is the unit normal to $S$ at the point $s$
+directed inside $D$, and $|r(q)-r(s)|=L(s)$, while $r'(q)=-t(s)$, it follows from  (\ref{eq:15}) that
+\begin{equation}\label{eq:16}
+-\frac{dq}{ds}-1+\kappa(s)L(s) =0, \quad \forall s\in S.
+\end{equation}
+Note that $L(s)=L(q)$ and $\kappa(s)=\kappa(q)$, as follows from (\ref{eq:8}).
+Differentiate the second equation  (\ref{eq:14}) with respect to $q$ and get
+ \begin{equation}\label{eq:17}
+-\frac{ds}{dq}-1+\kappa(s)L(s) =0, \quad \forall s\in S.
+\end{equation}
+Compare   (\ref{eq:16}) and  (\ref{eq:17}) and get
+\begin{equation}\label{eq:18}
+\frac{ds}{dq}=\frac{dq}{ds}=1, \qquad \forall s\in S.
+\end{equation}
+Therefore equation  (\ref{eq:16}) (or (\ref{eq:17})) implies
+\begin{equation}\label{eq:19}
+\kappa (s)L(s)=2.
+\end{equation}
+
+Let us check that $L(s)$=const. Differentiate the relation
+$$L^2(s)=|r(q)-r(s)|^2$$
+with respect to $s$. This yields
+$$2L(s) L'(s)=2 Re (r'(q)-r'(s), r(q)-r(s))=-4(t(s), r(q)-r(s))=0,$$
+because $t(s)$ is orthogonal to $r(q)-r(s)$.
+Consequently, $L'=0$ and
+\begin{equation}\label{eq:20}
+L(s)=const \qquad \forall s\in S.
+\end{equation}
+Equations (\ref{eq:19}) and (\ref{eq:20}) imply that $R(s)=const$.
+This means that $D$ is a disc.
+Theorem 1 is proved. \hfill $\Box$
+
+Consequently, Theorems 2 and 3 are also proved. \hfill $\Box$
+
+%References concerning the Pompeiu problem one can find in [1].
+
+%\newpage
+\begin{thebibliography}{00}
+
+\bibitem{F} M. Fedoryuk, The saddle-point method, Nauka, Moscow, 1977.
+
+\bibitem{P}  D. Pompeiu,   Sur une propriete
+integrale des fonctions de deux variables reelles,  Bull. Sci. Acad. Roy.
+Belgique,  5, N 15, (1929),  265-269.
+
+\bibitem{R363} A. G. Ramm,  The Pompeiu problem, Applicable Analysis,
+64, N1-2,
+(1997), 19-26.
+
+\bibitem{R382} A. G. Ramm,
+ Necessary and sufficient condition for a domain, which fails to have
+Pompeiu property, to be a ball, Journ. of
+Inverse and Ill-Posed Probl., 6, N2, (1998), 165-171.
+
+\bibitem{R470} A. G. Ramm, {\it Inverse Problems}, Springer, New York,
+2005.
+
+\bibitem{R629} A. G. Ramm, The Pompeiu problem, Global Journ. Math. Anal.,
+1, N1, (2013), 1-10.
+
+open access: http://www.sciencepubco.com/index.php/GJMA/issue/current
+
+\bibitem{W} S. Williams,
+Analyticity of the boundary for Lipschitz
+domains without Pompeiu property, Indiana Univ.\ Math.\ J., 30,
+(1981), 357-369.
+
+\bibitem{Z} L. Zalcman,  A bibliographical
+survey of the Pompeiu Problem, in "Approximation by solutions of partial
+differential equations", (B.Fuglede ed.), Kluwer Acad., Dordrecht, 1992,
+ pp. 177-186
+
+
+
+
+
+%\bibitem{[1]} A.G.Ramm, Inverse problems, Springer, New York, 2005.
+
+
+%\bibitem{[3]} A.G.Ramm, Scattering by obstacles, D.Reidel,
+%Dordrecht, 1986.
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}

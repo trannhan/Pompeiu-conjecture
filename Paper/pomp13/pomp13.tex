@@ -1,0 +1,593 @@
+% 08.27.12/pomp13.tex
+\documentclass[12pt,leqno]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{bm}
+
+\setlength{\topmargin}{-0.50cm}
+%\setlength{\textwidth}{15cm}
+%\setlength{\evensidemargin}{-0.15cm}
+%\setlength{\oddsidemargin}{0.5cm}
+\setlength{\textheight}{20.5cm}
+
+\setlength{\textwidth}{16.0cm}
+
+
+\newtheorem{thm}{Theorem}%[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{ax}{Axiom}
+\newtheorem{rem}{Remark}
+
+\newenvironment{proof}{\begin{trivlist}
+                       \item[]{\bf Proof.}
+                       \hspace{0cm}}{\hfill $\Box$
+                       \end{trivlist}}
+
+
+\def\cond{\mathop{\rm cond}}
+\def\dft{\mathop{\rm DFT}}
+\def\diag{\mathop{\rm diag}}
+\def\Re{\mathop{\rm Re}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+\begin{document}
+
+\baselineskip=16pt
+
+\title{The Pompeiu problem}
+
+\author{ A. G. Ramm
+}
+%\\
+%$\dag$Mathematics Department, Kansas State University,\\
+%Manhattan, KS 66506-2602, USA}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\footnotetext[1]{Email:
+\footnotetext[1]{ Email: ramm@math.ksu.edu}
+
+\date{}
+\maketitle
+\begin{abstract}
+\baselineskip=14pt
+Let $f \in L_{loc}^1 (\R^n)\cap \mathcal{S}'$, where
+$\mathcal{S}'$ is the Schwartz class of distributions,  and
+$$\int_{\sigma (D)} f(x) dx = 0 \quad \forall \sigma \in G, \qquad (*)$$
+where  $D\subset \R^n$ is a bounded domain, the closure $\bar{D}$ of
+which is diffeomorphic to a closed ball. Then the complement of $\bar{D}$
+is connected and path connected.
+By $G$ the group of all rigid motions of $\R^n$ is denoted. This group
+consists of all translations and rotations.
+
+It is conjectured that if $f\neq 0$ and (*) holds, then $D$ is a ball.
+This conjecture is discussed in detail.
+
+\end{abstract}
+
+\textbf{MSC:} 35J05, 31B20
+
+\textbf{Key words:} Symmetry problems; Pompeiu problem.
+
+\section{Introduction}
+In this paper the problem known as the Pompeiu problem is formulated and
+discussed. This problem originated in a paper \cite{P}, of 1929.
+The problem in a modern formulation is still open.
+
+Dimitrie  Pompeiu (1873-1954) was born in Romania, got his Ph.D in 1905 at
+the Sorbonne, in Paris, under the direction of H.Poincare. He is known
+mainly for the Pompeiu problem and for the Cauchy-Pompeiu formula in
+complex analysis.
+
+Let us formulate the Pompeiu problem as it is understood today.
+
+Let $f \in L_{loc}^1 (\R^n)\cap \mathcal {S}'$, where
+$\mathcal{S}'$ is the Schwartz class of distributions,  and
+\begin{equation}
+\label{e1}
+\int_{\sigma (D)} f(x) dx = 0 \quad \forall \sigma \in G,
+\end{equation}
+where $G$  is the group of all rigid motions of $\R^n$, $G$  consists of
+all translations and rotations, and
+ $D\subset \R^n$ is a bounded domain, the closure $\bar{D}$ of
+which is diffeomorphic to a closed ball. Under these assumptions the
+complement of $\bar{D}$
+in $\R^n$ is connected and path connected, see \cite{H}, the isotopy
+extension theorem.
+
+In \cite{P} the following question was raised by D.Pompeiu:
+
+{\bf Does (1) imply that  $f = 0$?}
+
+If yes, then we say that  $D$  has $P$-property (Pompeiu's
+property), and write $D\in P$. Otherwise, we say
+that $D$ fails to have $P$-property, and write  $D\in \overline{P}$.
+Pompeiu claimed in 1929 that every plane bounded domain has $P-$property.
+This claim turned to be false:
+a counterexample was given 15 years later in \cite{C}. The counterexample
+is a
+domain $D$ which is a disc, or a ball in $\R^n$ for $n> 2$. If $D$ is a
+ball, then there are $f\not\equiv 0$ for which equation (1) holds.
+The set of all $f\not\equiv 0$, for which equation
+(1) holds, was constructed in \cite{R363}. There are infinitely many
+(a continuum)  such $f$.
+A bibliography on the Pompeiu
+problem ($P-$problem) can be found in \cite{Z} and
+in \cite{R363}.
+
+The current formulation of the $P-$problem is the following:
+
+{\it Prove that if $D\in \overline{P}$
+then $D$ is a ball.}
+
+We use the word ball also in the case $n=2$, when this word means
+disc, and discuss the $P-$problem in detail. This problem leads
+to some problems of general mathematical interest: a symmetry problem
+for partial differential equations and a problem in harmonic analysis.
+
+Let us make the following standing assumptions:
+
+{\it Assumptions A:
+
+$A_1):$ $D$ is a bounded domain, the closure of which is diffeomorphic to
+a
+closed ball, the boundary $S$ of $D$ is a closed connected $C^1-$smooth
+surface,
+
+$A_2):$ $D$ fails to have $P-$property.
+}
+
+
+
+Our main conjecture is:
+
+{\bf Conjecture 1.} {\it If Assumptions A hold, then $D$ is a ball.}
+
+In Section 2 this Conjecture  is discussed. We prove that this Conjecture
+is equivalent to a symmetry problem for a partial differential equation.
+Several symmetry problems were studied by the method based on Theorem 2,
+see \cite{R512}-\cite{R614}.
+
+{\bf Conjecture 2.} {\it If problem \eqref{e2} (see below) has a solution,
+then $D$ is a ball.}
+
+It is also equivalent to the following
+
+{\bf Conjecture 3.} {\it  If Assumption $A_1$ holds and the Fourier
+transform of the characteristic function of $D$ has a spherical surface of
+zeros, then $D$ is a ball.}
+
+\section{Discussion of the Conjectures}
+
+It is proved in \cite{W} that if Assumptions A hold, then the boundary
+$S$ of $D$ is real-analytic. It is proved in Theorem 3, below,  that
+if Assumptions A hold, then  the problem
+\begin{equation}
+\label{e2}
+ (\nabla^2 + k^2)u = 1\quad \text{in}\quad D,\qquad u\big{|}_S = 0,
+\quad u_N\big{|}_S=0, \quad k^2 = const>0,
+\end{equation}
+has a solution.
+% (see \cite{BST}, \cite{R363} and \cite{R470},Chapter 11).
+In \eqref{e2} $N=N_s$ is the outer unit normal to $S$
+pointing out
+of $D$, $s\in S$ is a point on $S$.
+%To make this paper essentially self-contained, a derivation of  relation
+%\eqref{e2} is given in Theorem 2.
+
+The basic results, on which our discussion of Conjectures 1, 2 and 3 is
+based, are Theorems 1, 2 and 3. Theorems 1 and 2 were proved originally in
+\cite{R382}, \cite{R363},  and in
+\cite{R470}, Chapter 11. A result, equivalent to Theorem 3, has been
+proved originally in \cite{BST} by a considerably longer and more
+complicated argument. Our proof is borrowed essentially from
+\cite{R470}, Chapter 11.
+In the paper \cite{K} the null-varieties of the Fourier transform of
+the characteristic function of a bounded domain $D$  are studied.
+The properties of these varieties and the geometrical properies
+of $D$ are related, of course, but it is not clear in what way.
+Conjecture 3, if proved, is an interesting example of such a relation.
+
+
+To make
+the presentation essentially self-contained,  proofs of all of the
+basic results are included in this paper.
+
+{\bf Theorem 1.}  {\it If Assumptions A hold, then
+\begin{equation}
+\label{e3}
+[s,N]=u_N, \quad \forall s\in S,
+\end{equation}
+where $[s,N]$ is the cross product in $\R^3$, and $u$ is a
+vector-function that solves the problem
+\begin{equation}
+\label{e4}
+(\nabla^2+k^2)u=0 \quad in \quad D, \quad u|_S=0.
+\end{equation}
+}
+If $n=2$, then $D$ is a plane domain, $S$ is a curve, diffeomorphic
+to a circle, $u$ is a scalar solution to equation (4), and equation (3)
+yields $s_1N_2-s_2N_1=u_N, \quad \forall s\in S,$
+where $N_j$, $j=1,2,$ are Cartesian coordinates of the unit normal
+$N$ to $S$.
+Indeed, if $n=2$ then the cross product of two vectors
+$[s_1e_1+s_2e_2, N_1e_1+N_2e_2]$ is calculated by the formula
+$[s,N]=(s_1N_2-s_2N_1)e_3,$ where $e_3$ is a unit vector,
+orthogonal to the plane domain $D$, and the triple $\{e_j\}_{j=1}^3$
+is a standard orthonormal basis in $\R^3$.
+
+Let us state the following characterization of spheres.
+
+{\bf Theorem 2.} {\it If $S$ is a smooth surface homeomorphic to a sphere
+and $[s,N]=0$ on $S$, then $S$ is a sphere.}
+
+The proof of Theorem 2 will be given in the coordinate system in which
+the condition $[s,N]=0$ on $S$ is valid. This condition is not invariant
+with respect to translations, although the geometrical conclusion, namely,
+that $S$ is a sphere, is invariant with respect to translations.
+
+It follows from Theorem 2 that {\it the conclusion of Conjecture 1 will
+be established if one proves that $[s,N]=0$ on $S$}.
+
+Let us start by  proving Theorem 2, then Theorem 1 is proved, and,
+finally, we prove Theorem 3.
+It is assumed throughout that $n=3$, but most of our arguments can be used
+for any $n\ge 2$.
+
+{\it Proof of Theorem 2.} Let $n=3$ and
+assume that $s(p,q)$ is the parametric equation of the surface $S$.
+The normal $N$ to $S$ is a vector directed along the vector
+$[s_{p},s_{q}]$,
+where $s_{p}$ is partial derivative with respect to the
+parameter $p$.  The assumption $[s, N]=0$ on $S$, yields
+\begin{equation}
+\label{e5}
+[s, [s_p, s_q]]=s_p s\cdot s_q-s_q s\cdot s_p=0.
+\end{equation}
+Since the vectors $s_p$ and $s_q$ are linearly independent
+on a smooth surface, equation \eqref{e5}
+implies
+\begin{equation}
+\label{e6}
+\frac{\partial s^2}{\partial p}=0,\quad \frac{\partial s^2}
+{\partial q}=0.
+\end{equation}
+Therefore
+\begin{equation}
+\label{e7}
+s^2=const.
+\end{equation}
+This is an equation of a sphere in the coordinate system with the origin
+at the center of the sphere.
+
+
+
+Theorem 2 is proved.\hfill $\Box$
+
+{\it Proof of Theorem 1.} Let $n=3$ and $\mathcal{N}$ denote the set of
+all smooth solutions to \eqref{e4} in a ball $B$, containing $D$.
+Multiply \eqref{e2} by
+and arbitrary solution $h$ to equation \eqref{e4} in a ball $B$,
+containing $D$, integrate by parts, take into account
+the boundary conditions in \eqref{e2}, and get the relation
+$$\int_D h(x)dx=0 \qquad \forall h\in \mathcal{N}.$$
+Since $h\in \mathcal{N}$ implies $h(gx)\in \mathcal{N}$ $\forall g$,
+where $g$ is an arbitrary rotation in $\R^3$ about the origin $O$,
+one obtains
+\begin{equation}
+\label{e8}
+\int_D h(gx)dx=0 \qquad \forall h\in \mathcal{N},\,\, \forall g.
+\end{equation}
+Let $O\in D$ be arbitrary,  and take an arbitrary straight
+line $\ell$ passing through $O$ and directed along a
+unit vector $\alpha$. Let
+$g=g(\phi)$ be the rotation about
+$\ell$ by an angle $\phi$ counterclockwise. Differentiate
+\eqref{e8} with respect to $\phi$ and then set $\phi=0$, see \cite{R382},
+cf \cite{R512}. The result is
+\begin{equation}
+\label{e9}
+\int_D\nabla h(x)\cdot[\alpha, x]dx=0,
+\end{equation}
+where $[\alpha, x]$ is the cross product and $\cdot$ stands for the inner
+product in $\R^3$. Equation  \eqref{e9} is invariant with respect to
+translations because $\int_D\nabla h(x)dx=0$ $\forall h\in  \mathcal{N}$.
+Indeed,  $h\in  \mathcal{N}$ implies $\nabla h \in  \mathcal{N}$.
+Using the divergence theorem, the relation $\nabla \cdot [\alpha, x]=0$,
+valid for any constant vector $\alpha$, and the arbitrariness of $\alpha$,
+one derives from  \eqref{e9} the following relation
+\begin{equation}
+\label{e10}
+\int_S h(s) [s, N]ds=0,\quad \forall h\in \mathcal{N},
+\end{equation}
+which is also invariant with respect to translations.
+Indeed, $N$ is invariant under translations beacause $[s_p, s_q]$ is,
+and $\int_S h(s) [a, N]ds=0$ for any constant vector $a$ because
+$\int_S h(s) Nds=\int_D \nabla hdx=0$, as was pointed out above.
+Let us derive from \eqref{e10} equation \eqref{e3}.
+We need the following result.
+
+{\bf Lemma 1.}{\it  The orthogonal complement of the set $M$ of the
+restrictions of all $h\in \mathcal{N}$ to $S$ is a finite-dimensional
+space spanned by the functions $u_{jN}$, where $\{u_j\}_{j=1}^J$
+is the basis of the eigenspace of the Dirichlet Laplacian in
+$D$, corresponding to the eigenvalue $k^2$.}
+
+{\bf Remark 1}. It follows from \eqref{e10} that $[s,N]$ is orthogonal
+in $L^2(S)$ to the set $M$. Therefore, by Proposition 1,  each of
+the three components of $[s,N]$ must be  linear combinations of the
+functions $u_{jN},\,\,1\le j\le J$. In other words, equation
+\eqref{e3} holds.
+
+{\it Proof of Lemma 1.} Note that the  result of Lemma 1 is
+equivalent to the assertion that the boundary value problem
+\begin{equation}
+\label{e11}
+(\nabla^2+k^2)h=0\quad in \quad D, \quad h|_S=f
+\end{equation}
+is solvable if and only if
+\begin{equation}
+\label{e12}
+ \int_Sfu_{jN}ds=0, \quad 1\le j\le J.
+\end{equation}
+where $u_j$, $1\le j\le J,$ is a basis of the solutions to problem
+\eqref{e4}.
+The {\it necessity}  of conditions \eqref{e12} is proved by the relation
+$$0=\int_Du_j(\nabla^2+k^2)hdx=-\int_Sfu_{jN}ds,$$
+where an integration by parts  and the boundary condition $u_j=0$ on
+$S$ were used, and equation \eqref{e4} for $h$
+was taken into account.
+
+The {\it sufficiency} of conditions \eqref{e12} is proved as follows.
+Denote by $H^{m}(D)$ the usual Sobolev spaces. Given
+an $f\in H^{3/2}(S)$, construct
+an arbitrary $F\in H^2(D)$, such that $F|_S=f|_S$, and define
+$h:=w+F$, where
+\begin{equation}
+\label{e13}
+(\nabla^2+k^2)w=-(\nabla^2+k^2)F \quad in \quad D, \quad w|_S=0.
+\end{equation}
+If such $w$ exists, then $h=w+F$ solves problem \eqref{e11}.
+For the existence of $w$ it is necessary and sufficient that
+$$\int_D(\nabla^2+k^2)Fu_jdx=0,\quad 1\le j\le J.$$
+An integration by parts shows that
+these conditions are equivalent to conditions \eqref{e12} because
+$u_j$ solve problem \eqref{e4}. Thus, Lemma 1 is
+proved. \hfill $\Box$
+
+Equation \eqref{e10} says that $[s,N]$ is orthogonal to the
+set $M$, that is, to the restrictions of all $h\in \mathcal{N}$ to $S$.
+
+{\bf Lemma  2}. {\it The set $M$ is dense in $L^2(S)$ in the set
+of
+all $\psi\in H^{3/2}(S)$ for which the boundary problem \eqref{e13} is
+solvable.}
+
+Therefore equation \eqref{e10} and
+Lemma 1 imply  \eqref{e3}.
+
+{\it Proof of  Lemma 2.}
+Assume the contrary. Then for some $f\in H^{3/2}(S)$, $f\neq 0$,  problem
+\eqref{e11} is solvable and
+$$\eta(y):=\int_S f(s)\psi(s,y)ds=0\quad \forall y\in D':=\R^3\setminus
+D,$$
+where $\psi(x,y):=\frac{e^{ik|x-y|}}{4\pi |x-y|}\in \mathcal{N}$ for $y\in
+B'$, that is, outside a ball containing $D$.  The function  $\eta$ is a
+simple-layer potential which vanishes in $B'$, and by the unique
+continuation property for solutions of the homogeneous helmholtz
+equation, $\eta=0$ everywhere in $D'$. Thus, it vanishes on $S$.
+Therefore, $\eta$ solves
+problem \eqref{e4}. By the jump relation for the normal derivative of
+$\eta$ across $S$, one has $f=\eta_{N}$, where $\eta_{N}$ is the limiting
+value of the normal derivative of $\eta$ on $S$ from inside $D$. If
+problem \eqref{e10} is solvable, then, as we have proved,
+$f$ is orthogonal to all functions $u_{jN}$. The function $\eta_{N}$
+is a linear combination of these functions. This and the relation
+$f=\eta_{N}$ prove that $f=0$.
+Consequently, we have proved the claimed density of $M$ in the set
+of all $H^{3/2}(S)-$functions $f$ for which problem \eqref{e11} is
+solvable.  Lemma 2 is proved. \hfill $\Box$
+
+This completes the proof of Theorem 2. \hfill $\Box$
+
+
+%Equation \eqref{e14} is not invariant with respect to translations.
+
+{\bf Theorem 3}. {\it If (1) holds, then (2) holds.}
+
+{\it Proof of Theorem 3.} Write \eqref{e1} as
+$$\int_{\R^3}f(gx+y)\chi (x)dx=0\qquad \forall y\in \R^3,\quad \forall
+g\in G,$$ where $\chi (x)$ is the characteristic function of $D$.
+Applying the Fourier transform and the convolution theorem one gets
+\begin{equation}
+\label{eX}
+\tilde{f}(\xi)\overline{\tilde{\chi}(g^{-1}\xi)}=0,
+\end{equation}
+ where
+$\tilde{f}$ and $\tilde{\chi}$ are the Fourier transforms of $f$ and
+$\chi$, respectively, and the overbar stands for the complex
+conjugate. The Fourier transform of $f$ is understood in the sense
+of distributions. The Fourier transform $\tilde{\chi}$ is an entire
+function of exponential type because function $\chi$ has support
+$\overline{D}$, which is a bounded set. Moreover, $\tilde{\chi}$ is
+a uniformly bounded function of $\xi\in \R^n$. Therefore, the
+product of the tempered distribution $\tilde{f}$ and the function
+$\tilde{\chi}$ is a tempered distribution also.
+
+ Since $g^{-1}$
+runs through all the rotations, one can replace $g^{-1}$ by $g$. It
+follows from \eqref{eX} that
+\begin{equation}
+\label{eY}
+supp\, \tilde{f}=\cup_{k} C_k,\,\, \text {where} \,\, C_k:=\{\xi:
+\tilde{\chi}(\xi)=0\,\,\, \forall \xi: \xi^2-k^2=0\}.
+\end{equation}
+ In other
+words, the support of the distribution $\tilde{f}$ is a subset of
+the union of spherical surfaces of zeros of $\tilde{\chi}$, the
+Fourier transform of the characteristic function of the bounded
+domain $D$.
+ Since $\tilde{\chi}(\xi)$ is an entire
+function of exponential type, vanishing on an irreducible algebraic
+variety $\xi^2-k^2=0$ in $\C^3$, one concludes, using the division
+lemma, that
+\begin{equation}
+\label{eZ}
+\tilde{\chi}(\xi)=(\xi^2-k^2)\tilde{u}(\xi),
+\end{equation}
+ where $\tilde{u}$ is
+an entire function of the same exponential type as $\tilde{\chi}$ (
+see \cite{F}). Therefore, by the Paley-Wiener theorem, the
+corresponding $u$ has compact support. Taking the inverse Fourier
+transform of equation \eqref{eZ}, one gets:
+\begin{equation}
+\label{eW}
+(-\nabla^2-k^2)u(x)=\chi(x)   \qquad in\quad \R^3, \quad u=0\, \text{if}\,\,
+\quad |x|>R,
+\end{equation}
+ where $R>0$ is sufficiently large. By the elliptic
+regularity results,  one concludes that  $u\in H^2_{loc}(\R^3)$.
+Since $u$ solves the Helmholtz elliptic equation and vanishes near
+infinity, that is, in the region  $|x|>R,$ the uniqueness of the
+solution to the Cauchy problem to the equation \eqref{eW} and  the
+path connectedness of the complement $D_1:=\bar{D}'$ of the closure
+$\bar{D}$ of $D$ allow one to conclude that $u=0$ in $D_1$. The
+connectedness and path connectedness of $D_1$ follow from our
+Assumptions A and from the isotopy extension theorem (\cite{H}). If
+$u=0$ in $D_1$ and $u\in H^2_{loc}(\R^3)$, it follows from the
+Sobolev embedding theorem that the boundary conditions (2) hold.
+Since $\chi(x)=1$ in $D$, equation (2) holds. Theorem 3 is proved.
+\hfill $\Box$.
+
+\section{Relation to analyticity}
+The classical Morera theorem in complex analysis says
+that if $\int_Cf(z)dz=0$ for any closed polygon $C$ in a domain $D$
+of the complex plane, and if $f$ is continuously differentiable in $D$,
+then $f$ is analytic in $D$. A simple proof is based on a version of
+Green's formula: $0=\int_Cf(z)dz= 2i \int_{\Delta}\bar{\partial}f dxdy$.
+Here $\Delta$ is the plane domain with the boundary $C$ and
+$\bar{\partial}f:=\frac{f_x+if_y}{2}$. If $\int_{\Delta}\bar{\partial}f
+dxdy=0$ for any polygon $\Delta$, then one easily derives that
+$\bar{\partial}f=0$ evrywhere in $D$. This implies that $f$ is analytic in
+$D$.
+
+One may ask if the assumption that $f$ is continuously differentiable can
+be replaced by a weaker assumption, and if the set of polygons can be
+replaced by some other sets. The answer to the first question is easy:
+if $f\in L^1_{loc}(D)$, then one considers a mollified function
+$f_\epsilon(z):=\int_{\zeta: |z-\zeta|\le
+\epsilon}\omega_\epsilon(z-\zeta)f(\zeta)dudv$, where $\zeta=u+iv$ and
+$\omega_\epsilon(z)$ is the standard mollifying kernel (cite{Ho}, p.14).
+It is known that $f_\epsilon\to f$ in $L^1(D)$ as $\epsilon \to 0$, and
+one can select a subsequence $\epsilon_j\to 0$, such that
+$f_{\epsilon_j}\to f$ almost everywhere in $D$. If
+$\int_Cf(z)dz=0$ for any closed polygon $C$, then
+$\int_Cf_\epsilon(z)dz=0$ for any closed polygon $C$, and the above
+argument for a $C^1-$smooth $f$ leads to the conclusion that
+$f_\epsilon$ is analytic in $D$ for all sufficiently small $\epsilon$.
+Since a sequence $f_{\epsilon_j}$ of analytic functions
+converges to $f$ in $L^1(D)$ and almost everywhere in $D$,
+one concludes that $f$ is analytic in $D$. The second question:
+can one replace the set of polygons by other sets is less simple.
+For example,  one cannot replace polygons by the set $\sigma(B)$,
+where $B$ is a ball. Indeed, using the above argument one arrives
+at the relation $\int_{\sigma(B)}\bar{\partial}fdxdy=0$, and this does not
+imply that $\bar{\partial}f=0$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{thebibliography}{99}
+
+\baselineskip=16pt
+\bibitem{BST} L. Brown, B. Schreiber, B. Taylor,   Spectral
+synthesis and the Pompeiu problem, {\it Ann. Inst. Fourier}  {\bf
+23} no. 3 (1973) 125-154.
+
+\bibitem{C} L. Chakalov, Sur un probleme de D.Pompeiu, {\it Godishnik
+Univ. Sofia, Fac. Phys-Math.} {\bf 40} (1944) 1-14.
+
+
+%\bibitem{CH} T. Chatelain and A. Henrot, Some results about Schiffer's
+%conjectures,  Inverse Problems,  15, (1999), 647-658.
+
+\bibitem{F} B. Fuks, {\it Theory of analytic functions of several
+variables.} AMS, Providence RI, 1963.
+
+\bibitem{H} M. Hirsch, {\it Differential topology.} Springer-Verlag, New
+York, 1976.
+
+\bibitem{Ho} L.H\"ormander, {The analysis of linear partial differential
+operators I.} Springer-Verlag, Berlin, 1983.
+
+\bibitem{K} T. Kobayashi, Asymptotic behavior of the null variety for a
+convex domain in a non-positively curved space form,
+{\it J. Fac. Sci.Univ. Tokyo Sect IA Math.}{\bf 36} (1989) 389-478.
+
+\bibitem{P}  D. Pompeiu,   Sur une propriete
+integrale des fonctions de deux variables reelles,  {\it Bull. Sci.
+Acad. Roy. Belgique} {\bf 5} no 15 (1929) 265-269.
+
+\bibitem{R363} A. G. Ramm,  The Pompeiu problem, {\it Applicable
+Analysis} {\bf 64} no 1-2 (1997) 19-26.
+
+\bibitem{R382} A. G. Ramm,
+ Necessary and sufficient condition for a domain, which fails to have
+Pompeiu property, to be a ball, {\it Journ. of Inverse and Ill-Posed
+Probl.} {\bf 6} no 2, (1998), 165-171.
+
+\bibitem{R470} A. G. Ramm, {\it Inverse Problems.} Springer, New York,
+2005.
+
+\bibitem{R512} A. G. Ramm, A symmetry problem, {\it Ann. Polon. Math.} {\bf
+92} (2007) 49-54.
+
+\bibitem{R556} A. G. Ramm, Symmetry problems 2, {\it Annal. Polon. Math.} {\bf
+96} no 1 (2009) 61-64.
+
+\bibitem{R614} A. G. Ramm, Symmetry problem, {\it Proc. Amer. Math. Soc.}
+(forthcoming)
+
+\bibitem{W} S. Williams,
+Analyticity of the boundary for Lipschitz domains without Pompeiu
+property, {\it Indiana Univ.\ Math.\ Journ.} {\bf 30} (1981) 357-369.
+
+\bibitem{Z} L. Zalcman, A bibliographical
+survey of the Pompeiu Problem, in the book {\it Approximation by
+solutions of partial differential equations.} Edited by B.Fuglede.
+Kluwer Acad., Dordrecht, 1992, pp. 177-186.
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+Department of Mathematics, Kansas State University, Manhattan, KS
+66506-2602,
+
+
+email:     ramm@math.ksu.edu
+
+
+\end{document}
