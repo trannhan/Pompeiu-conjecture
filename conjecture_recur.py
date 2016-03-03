@@ -13,8 +13,10 @@ import subprocess
 import os
 import tempfile
 import shutil
+import numba as nb
 
 
+@nb.jit(target='cpu', cache=True)
 def coef(n,J):
     global l
     p = np.zeros((l,),dtype=np.int)
@@ -208,7 +210,7 @@ display(eq)
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 print("\nAll possible solutions:")
-SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,rational=0,dict=1)
+SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,dict=1)
 for sol in SolList:
     display(sol)
 #sp.preview(SolList, output='png')
