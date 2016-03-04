@@ -13,9 +13,8 @@ import subprocess
 import os
 import tempfile
 import shutil
-from numba import autojit
 
-@autojit
+
 def coef(n,J):
     global l
     p = np.zeros((l,),dtype=np.int)
@@ -94,18 +93,13 @@ def printEqMath(A,f):
     
 def SimplifyEq(eq,f):
     global M,l
-    # F[k]=abs(f[k])
-    #F = sp.symbols('F0:25',real=True)
     
     #Change f_{-k} = conj(f_{k})
     for k in range(M):
-        eq = eq.subs(f[k],np.conj(f[l-1-k]))
+        eq = eq.subs(f[k],np.conjugate(f[l-1-k]))
     #Shift the index from (0,l) to (-M,M)
     for k in range(M,l):
-        eq = eq.subs(f[k],f[k-M])   
-    #Substitute f*conj(f)=|f|^2=F^2
-    #for k in range(M+1):
-        #eq = eq.subs(f[k]*np.conj(f[k]),F[k]**2)
+        eq = eq.subs(f[k],f[k-M])        
     
     #eq = sp.simplify(eq.expand(complex=True))    
     #eq = sp.powsimp(eq)
@@ -214,7 +208,7 @@ display(eq)
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 print("\nAll possible solutions:")
-SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,rational=0,dict=1)
+SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,dict=1)
 for sol in SolList:
     display(sol)
 #sp.preview(SolList, output='png')
@@ -223,3 +217,4 @@ Time = "\nTime elapsed: " + str(time.time()-startTime) + " seconds"
 print(Time)
 print("\nGenerating report.")
 generate_report(filename,s,eq,SolList,Time)
+

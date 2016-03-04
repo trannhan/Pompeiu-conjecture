@@ -17,13 +17,13 @@ import shutil
 
 def coef(n,J):
     global l
-    p = np.zeros((l,),dtype=np.int)
+    p = 1
     
     for k in range(l):
-        p[k] = np.math.factorial(J[k])        
-
-    return np.math.factorial(n)/np.prod(p)
-
+        p *= np.math.factorial(J[k])
+    
+    return np.math.factorial(n)/p    
+    
 
 def validate(J,n):
     global l,M
@@ -31,18 +31,18 @@ def validate(J,n):
     if sum(J)!=n+2:
         return False
         
-    summJ = np.zeros((l,),dtype=np.int)
+    summJ = 0
     for k in range(l):        
-        summJ[k] = (k - M)*J[k]
+        summJ += (k - M)*J[k]
         
-    if sum(summJ)!=-n:
+    if summJ!=-n:
         return False
         
     return True        
         
-                
-def findJ(n,depth=0):
-    global J,A,l    
+        
+def findJ(depth=0):
+    global J,A,n,l    
     
     if depth>=l:
         if validate(J,n):        
@@ -51,7 +51,7 @@ def findJ(n,depth=0):
     else:
         for k in range(n+3):
             J[depth] = k
-            findJ(n,depth+1)
+            findJ(depth+1)
     
     
 def printEqLatex(A,breakline=4):
@@ -93,22 +93,19 @@ def printEqMath(A,f):
     
 def SimplifyEq(eq,f):
     global M,l
-    # F[k]=abs(f[k])
-    #F = sp.symbols('F0:25',real=True)
     
     #Change f_{-k} = conj(f_{k})
     for k in range(M):
-        eq = eq.subs(f[k],sp.conjugate(f[l-1-k]))
+        eq = eq.subs(f[k],np.conjugate(f[l-1-k]))
     #Shift the index from (0,l) to (-M,M)
     for k in range(M,l):
         eq = eq.subs(f[k],f[k-M])   
-    #Substitute f*conj(f)=|f|^2=F^2
-    #for k in range(M+1):
-        #eq = eq.subs(f[k]*np.conj(f[k]),F[k]**2)
     
     #eq = sp.simplify(eq.expand(complex=True))    
     #eq = sp.powsimp(eq)
-    #eq = sp.factor(eq)    
+    #eq = sp.factor(eq)
+    #sp.pprint(eq)  
+    
     return eq
 
 
@@ -125,7 +122,7 @@ def displayMath(LatexString,filename):
 #    pdf = build_pdf(tex)
 #    pdf.save_to(filename+".pdf")
     
- 
+    
 def generate_pdf(filename,tex):    
     current = os.getcwd()
     temp = tempfile.mkdtemp()
@@ -183,49 +180,43 @@ l = M*2+1
 n = input("Enter an integer for n: ")
 n = int(n)
 
-print("\nM = "+str(M)+", n = "+str(n)+":")
+print("M = "+str(M)+", n = "+str(n)+":")
 # Combination in (f)^n
 J = np.zeros((l,),dtype=np.int)
-# Change the number of f[k] here, e.g 21 means max(M)=10 and l=21
-f = sp.symbols('f0:21',complex=True)
+# A=a list of J
+A = np.empty((0,l),dtype=np.int)
+# Change the number of f[k] here, e.g 25 means max(M)=12 and l=25
+f = sp.symbols('f0:25',complex=True)
 
 startTime = time.time()
 
-s = ["" for x in range(n)]
-eq = [0 for x in range(n)]
-for N in range(n):
-    filename = "conjecture M="+str(M)+" n="+str(N+1)
-    # A = list of J
-    A = np.empty((0,l),dtype=np.int)
-    try:    
-        A = np.load(filename + '.npy')
-    except:    
-        findJ(N+1)
-        np.save(filename,A)
-    s[N] = printEqLatex(A)
-    eq[N] = printEqMath(A,f)
-    eq[N] = SimplifyEq(eq[N],f)
+filename = "conjecture M="+str(M)+" n="+str(n)
+try:    
+    A = np.load(filename + '.npy')
+except:    
+    findJ()
+    np.save(filename,A)
+s = printEqLatex(A)  
 
 print("\nOriginal equation:")
-for N in range(n):
-    display(Math(s[N].replace('$\n$','')))
+#displayMath(s,filename)
+display(Math(s.replace('$\n$','')))
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
+eq = printEqMath(A,f)
+eq = SimplifyEq(eq,f)
 print("\nEquivalent left-hand-side, where f_{-j}=conj(f_j):")
-for N in range(n):
-    display(eq[N])
+display(eq)
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 print("\nAll possible solutions:")
 SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,dict=1)
-#F = sp.Matrix(eq)
-#RHS = sp.zeros(n,1)
-#SolList = F.solve(RHS)
 for sol in SolList:
     display(sol)
+#sp.preview(SolList, output='png')
 
 Time = "\nTime elapsed: " + str(time.time()-startTime) + " seconds"
 print(Time)
 print("\nGenerating report.")
-#generate_report(filename,s,eq,SolList,Time)
+generate_report(filename,s,eq,SolList,Time)
 

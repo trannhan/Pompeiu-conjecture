@@ -13,10 +13,8 @@ import subprocess
 import os
 import tempfile
 import shutil
-import numba as nb
 
 
-@nb.jit(target='cpu', cache=True)
 def coef(n,J):
     global l
     p = np.zeros((l,),dtype=np.int)
@@ -43,8 +41,8 @@ def validate(J,n):
     return True        
         
                 
-def findJ(depth=0):
-    global J,A,n,l    
+def findJ(n,depth=0):
+    global J,A,l    
     
     if depth>=l:
         if validate(J,n):        
@@ -53,7 +51,7 @@ def findJ(depth=0):
     else:
         for k in range(n+3):
             J[depth] = k
-            findJ(depth+1)
+            findJ(n,depth+1)
     
     
 def printEqLatex(A,breakline=4):
@@ -98,10 +96,10 @@ def SimplifyEq(eq,f):
     
     #Change f_{-k} = conj(f_{k})
     for k in range(M):
-        eq = eq.subs(f[k],sp.conjugate(f[l-1-k]))
+        eq = eq.subs(f[k],np.conjugate(f[l-1-k]))
     #Shift the index from (0,l) to (-M,M)
     for k in range(M,l):
-        eq = eq.subs(f[k],f[k-M])        
+        eq = eq.subs(f[k],f[k-M])   
     
     #eq = sp.simplify(eq.expand(complex=True))    
     #eq = sp.powsimp(eq)
@@ -180,43 +178,49 @@ l = M*2+1
 n = input("Enter an integer for n: ")
 n = int(n)
 
-print("M = "+str(M)+", n = "+str(n)+":")
+print("\nM = "+str(M)+", n = "+str(n)+":")
 # Combination in (f)^n
 J = np.zeros((l,),dtype=np.int)
-# A=a list of J
-A = np.empty((0,l),dtype=np.int)
-# Change the number of f[k] here, e.g 25 means max(M)=12 and l=25
-f = sp.symbols('f0:25',complex=True)
+# Change the number of f[k] here, e.g 21 means max(M)=10 and l=21
+f = sp.symbols('f0:21',complex=True)
 
 startTime = time.time()
 
-filename = "conjecture M="+str(M)+" n="+str(n)
-try:    
-    A = np.load(filename + '.npy')
-except:    
-    findJ()
-    np.save(filename,A)
-s = printEqLatex(A)  
+s = ["" for x in range(n)]
+eq = [0 for x in range(n)]
+for N in range(n):
+    filename = "conjecture M="+str(M)+" n="+str(N+1)
+    # A = list of J
+    A = np.empty((0,l),dtype=np.int)
+    try:    
+        A = np.load(filename + '.npy')
+    except:    
+        findJ(N+1)
+        np.save(filename,A)
+    s[N] = printEqLatex(A)
+    eq[N] = printEqMath(A,f)
+    eq[N] = SimplifyEq(eq[N],f)
 
 print("\nOriginal equation:")
-#displayMath(s,filename)
-display(Math(s.replace('$\n$','')))
+for N in range(n):
+    display(Math(s[N].replace('$\n$','')))
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
-eq = printEqMath(A,f)
-eq = SimplifyEq(eq,f)
 print("\nEquivalent left-hand-side, where f_{-j}=conj(f_j):")
-display(eq)
+for N in range(n):
+    display(eq[N])
 print("\nTime elapsed:",time.time()-startTime,"seconds")
 
 print("\nAll possible solutions:")
 SolList = sp.solve(eq,f[1:M+1],manual=1,simplify=0,check=0,numerical=0,dict=1)
+#F = sp.Matrix(eq)
+#RHS = sp.zeros(n,1)
+#SolList = F.solve(RHS)
 for sol in SolList:
     display(sol)
-#sp.preview(SolList, output='png')
 
 Time = "\nTime elapsed: " + str(time.time()-startTime) + " seconds"
 print(Time)
 print("\nGenerating report.")
-generate_report(filename,s,eq,SolList,Time)
+#generate_report(filename,s,eq,SolList,Time)
 
