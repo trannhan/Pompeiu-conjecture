@@ -1,0 +1,86 @@
+
+=====COMPILE conjecture.py TO EXE=====
+cython conjecture.py --embed
+gcc -Os -I /usr/include/python3.4 -o conjecture conjecture.c -lpython3.4 -lpthread -lm -lutil -ldl
+
+
+=====BEOCAT========
+Setting up your virtual environment
+--------------------------------
+
+Change your shell to bash
+Make sure ~/.bash_profile exists
+if [ ! -f ~/.bash_profile ]; then cp /etc/skel/.bash_profile ~/.bash_profile; fi
+
+Add a line like source /usr/bin/virtualenvwrapper.sh to your .bashrc.
+echo "source /usr/bin/virtualenvwrapper.sh" >> ~/.bashrc
+
+CRITICAL: Logout, and then log back in
+
+Show your existing environments
+workon
+
+Create a virtual environment. Here I will create a default virtual environment called 'test', a python2 virtual environment called 'testp2', a python3 virtual environment called 'testp3', and a pypy environment called testpypy. Note that mkvirtualenv --help has many more useful options.
+---------------------------------
+ mkvirtualenv -p $(which python2) testp2
+ mkvirtualenv -p $(which python3) testp3
+ mkvirtualenv -p $(which pypy) testpypy
+
+Lets look at our virtual environments
+%workon
+testp2
+testp3
+testpypy
+
+Activate one of these
+--------------------
+workon testp2
+
+You can now install the python modules you want. This can be done using pip.
+pip install numpy
+
+
+====BEOCAT: Using your virtual environment within a job=====
+
+Here is a simple job script using the virtual environment testp2
+
+#!/bin/bash
+source /usr/bin/virtualenvwrapper.sh
+workon testp2
+~/path/to/your/python/script.py
+
+
+A note on mpi4py
+---------------
+
+If you are wanting to use mpi with your python script and are using a virtual environment, you will need to send the correct environment variables to all of the mpi processes to make the virtual environment work.
+
+#!/bin/bash
+# sample mpi4py submit script
+source /usr/bin/virtualenvwrapper.sh
+workon testp2
+
+# figure out the location of the python interpreter in the virtual environment
+PYTHON_BINARY=$(which python)
+# mpirun the python interpreter within the virtual environment
+# if you don't use the interpreter within the virtual environment, i.e. just using 'python'
+# the system python interpreter (without access to your other modules) will be used.
+mpirun ${PYTHON_BINARY} ~/path/to/your/mpi-enabled/python/script.py
+
+
+A note on scipy
+---------------
+
+SciPy requires numpy, unfortunately it doesn't properly define a dependency on numpy, so you just have to install it first.
+
+source /usr/bin/virtualenvwrapper.sh
+workon testp2
+
+pip install numpy
+
+# now scipy needs lapack and it doesn't detect the system one. lets fix it
+export LAPACK=/usr/lib/libreflapack.so
+export BLAS=/usr/lib/libopenblas_openmp.so
+
+pip install scipy
+

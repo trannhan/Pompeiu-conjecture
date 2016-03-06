@@ -1,0 +1,2 @@
+#mw_header{background-color:#4f2684}#p-personal ul{background-color:#512888}#p-personal li:hover{background-color:#4f2684}.portlet h3,.portlet h5{border-bottom:solid 1px #512888}#p-cactions li a,#p-cactions li a:hover,#p-cactions li a:visited{color:#7137bd}a{color:#7137bd}h1,h2{border-bottom:solid 1px #7137bd}#preftoc li a,#preftoc li a:hover,#preftoc li a:visited{color:#7137bd}#toctitle{border-bottom:solid 1px #512888}pre,.mw-code{border:solid 1px #512888}
+/* cache key: wikidb:resourceloader:filter:minify-css:7:183e47d84fa8e9fc5aa9dce63996bcef */
