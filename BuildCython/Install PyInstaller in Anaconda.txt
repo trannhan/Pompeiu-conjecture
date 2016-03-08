@@ -1,0 +1,15 @@
+anaconda search pyinstaller
+
+Linux:
+-----
+conda install -c https://conda.anaconda.org/auto pyinstaller
+
+Windows:
+-------
+conda install -c https://conda.anaconda.org/silg2 pyinstaller
+
+
+Or:
+---
+#!"c:\program files\python 3.5\python.exe"
+# EASY-INSTALL-ENTRY-SCRIPT: 'PyInstaller==3.1.1','console_scripts','pyinstaller'

@@ -1,7 +1,24 @@
+M=5, n=1: Cannot determine the truth value
+M=5, n=4: Cannot determine the truth value
+M=6, n=1: Cannot determine the truth value
+M=6, n=2: Cannot determine the truth value
+M=7, n=2: Cannot determine the truth value
 
-=====COMPILE conjecture.py TO Binary=====
+
+=====COMPILE TO BINARY=====
+UNIX:
+----
 cython conjecture.py --embed
 gcc -Os -I /usr/include/python3.4 -o conjecture conjecture.c -lpython3.4 -lpthread -lm -lutil -ldl
+
+
+WINDOWS:
+-------
+C:\Python31\python.exe C:\Python31\Scripts\cython.py smalltest1.py --embed
+
+cl.exe  /nologo /Ox /MD /W3 /GS- /DNDEBUG -Ic:\Python31\include -Ic:\Python31\PC /Tcsmalltest1.c /link /OUT:"test.exe" /SUBSYSTEM:CONSOLE /MACHINE:X86 /LIBPATH:c:\Python31\libs /LIBPATH:c:\Python31\PCbuild
+
+Need to set environment for cl to point to C compiler.
 
 
 =====BEOCAT========

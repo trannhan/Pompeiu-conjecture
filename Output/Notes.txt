@@ -1,0 +1,5 @@
+M=5, n=1: Cannot determine the truth value
+M=5, n=4: Cannot determine the truth value
+M=6, n=1: Cannot determine the truth value
+M=6, n=2: Cannot determine the truth value
+M=7, n=2: Cannot determine the truth value

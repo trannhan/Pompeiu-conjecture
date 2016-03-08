@@ -1,10 +1,13 @@
 #!/bin/bash
+
 # sample mpi4py submit script
 source /usr/bin/virtualenvwrapper.sh
-workon testp2
+workon testp3
+
 # figure out the location of the python interpreter in the virtual environment
 PYTHON_BINARY=$(which python)
+
 # mpirun the python interpreter within the virtual environment
 # if you don't use the interpreter within the virtual environment, i.e. just using 'python'
 # the system python interpreter (without access to your other modules) will be used.
-mpirun ${PYTHON_BINARY} ~/path/to/your/mpi-enabled/python/script.py
+mpirun ${PYTHON_BINARY} conjecture.py 4 2
